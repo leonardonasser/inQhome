@@ -30,7 +30,7 @@ import io.restassured.http.ContentType;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class AuthResourceTest {
     
-    @Inject
+   /* @Inject
     MockMailbox mailbox;
     
     @Inject

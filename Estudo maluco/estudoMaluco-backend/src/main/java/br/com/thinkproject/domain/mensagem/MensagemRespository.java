@@ -1,15 +1,12 @@
 package br.com.thinkproject.domain.mensagem;
 
 import br.com.thinkproject.infra.persistence.BaseRepository;
-
 import io.quarkus.panache.common.Sort;
-
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
 
@@ -26,7 +23,7 @@ public class MensagemRespository extends BaseRepository<Mensagem> {
          
         
         List<Mensagem> mensagens = Stream.concat(lista1.stream(), lista2.stream()).collect(Collectors.toList());
-        Collections.sort(mensagens, Comparator.comparing(Mensagem :: getDataHora));
+        Collections.sort(mensagens, Comparator.comparing(Mensagem::getDataHora));
          
         return mensagens; 
     }

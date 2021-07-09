@@ -57,7 +57,8 @@ public class UsuarioService {
     public Usuario criar(CriarUsuarioDTO criarUsuario) {
 
         
-        Usuario usuario = new Usuario(criarUsuario.getNome(), criarUsuario.getLogin(), Password.of(criarUsuario.getSenha()),
+        Usuario usuario = new Usuario(criarUsuario.getNome(),
+                criarUsuario.getLogin(), Password.of(criarUsuario.getSenha()),
                 criarUsuario.getTipoUsuario(), criarUsuario.getStatusUsuario());
 
         return salvar(usuario);

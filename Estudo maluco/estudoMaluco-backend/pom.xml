@@ -4,8 +4,8 @@
 	xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>estudoMaluco</groupId>
-	<artifactId>estudoMaluco</artifactId>
+	<groupId>estudo-maluco</groupId>
+	<artifactId>estudo-maluco</artifactId>
 	<version>projetos-SNAPSHOT</version>
 	<properties>
 		<checkstyle-maven-plugin.version>3.1.1</checkstyle-maven-plugin.version>

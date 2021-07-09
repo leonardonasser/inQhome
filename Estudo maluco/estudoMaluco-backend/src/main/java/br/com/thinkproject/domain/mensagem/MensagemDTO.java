@@ -10,7 +10,7 @@ import lombok.ToString;
 @Getter
 @ToString
 public class MensagemDTO {
- 
+
     private Long id;
     private Usuario usuarioCria;
     private Usuario usuarioRecebe;

@@ -2,10 +2,9 @@ package br.com.thinkproject.domain.mensagem;
 
 import br.com.thinkproject.domain.usuario.Usuario;
 import br.com.thinkproject.infra.persistence.BaseEntity;
-
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Calendar;
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,16 +13,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "mensagens")
 public class Mensagem extends BaseEntity<Mensagem> {
-   
+
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,7 +48,6 @@ public class Mensagem extends BaseEntity<Mensagem> {
     }
 
     public Mensagem(Long id, Usuario usuarioCria, Usuario usuarioRecebe, String texto) {
-        super();
         this.id = id;
         this.usuarioCria = usuarioCria;
         this.usuarioRecebe = usuarioRecebe;
@@ -60,6 +55,5 @@ public class Mensagem extends BaseEntity<Mensagem> {
         this.texto = texto;
         this.lido = false;
     }
-    
-    
+      
 }

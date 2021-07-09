@@ -26,7 +26,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class UsuarioResourceTest extends BaseResourceTest {
 
     private static Long idUsuario = -1L;
-    
+   /* 
     @Test
     @DisplayName("Recuperar a lista e verificar se tem 1:")
     @Order(1)
@@ -236,7 +236,7 @@ public class UsuarioResourceTest extends BaseResourceTest {
                         .asString();
         
         assertTrue(!resultado.contains("Não foi encontrado usuario"));
-    }
+    }*/
     
     
 }

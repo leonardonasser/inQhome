@@ -23,7 +23,7 @@ import javax.ws.rs.core.MediaType;
 //@Tag(name = "Usuarios Painel")
 @RolesAllowed(Role.ADMIN_ROLE)
 public class MensagemResource {
-    
+
     @Inject
     MensagemService mensagemService;
     

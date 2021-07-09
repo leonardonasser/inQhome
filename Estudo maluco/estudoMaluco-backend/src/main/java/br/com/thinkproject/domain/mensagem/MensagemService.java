@@ -2,7 +2,6 @@ package br.com.thinkproject.domain.mensagem;
 
 import br.com.thinkproject.domain.usuario.Usuario;
 import br.com.thinkproject.domain.usuario.UsuarioService;
-
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;

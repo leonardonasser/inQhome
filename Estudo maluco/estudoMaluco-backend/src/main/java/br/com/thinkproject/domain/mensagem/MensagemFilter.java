@@ -1,7 +1,6 @@
 package br.com.thinkproject.domain.mensagem;
 
 import javax.ws.rs.QueryParam;
-
 import lombok.Data;
 
 @Data
