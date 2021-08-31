@@ -9,8 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.inqhome.inqhome.usuario.Usuario;
-import com.inqhome.inqhome.usuario.UsuarioService;
+import com.inqhome.usuario.Usuario;
+import com.inqhome.usuario.UsuarioService;
 
 public class Casa {
     @Id

@@ -1,4 +1,4 @@
-package com.inqhome.inqhome.usuario;
+package com.inqhome.usuario;
 
 public class CriarUsuarioDTO {
 	

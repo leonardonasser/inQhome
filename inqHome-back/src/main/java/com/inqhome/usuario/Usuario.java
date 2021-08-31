@@ -1,4 +1,4 @@
-package com.inqhome.inqhome.usuario;
+package com.inqhome.usuario;
 
 import java.io.Serializable;
 import java.util.Objects;

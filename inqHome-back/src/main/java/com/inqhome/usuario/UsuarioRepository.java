@@ -1,4 +1,4 @@
-package com.inqhome.inqhome.usuario;
+package com.inqhome.usuario;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
