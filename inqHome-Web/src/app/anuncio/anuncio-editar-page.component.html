@@ -1,0 +1,5 @@
+<app-page-header title="Anuncio" pretitle="Editar"></app-page-header>
+
+<nz-card [nzLoading]="loading">
+    <app-anuncio-form *ngIf="anuncio != null" [anuncio]="anuncio"></app-anuncio-form>
+</nz-card>
