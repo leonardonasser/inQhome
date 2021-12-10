@@ -1,0 +1,153 @@
+<div>
+  <form *ngIf="showHeader" class="mb-4" (ngSubmit)="emitList()">
+    <div class="row">
+      <div *ngIf="showSearch" class="col col-xl-6">
+          <nz-input-group [nzAddOnAfter]="searchAddOn">
+            <input
+              type="text"
+              nz-input
+              name="searchInput"
+              autocomplete="off"
+              [placeholder]="searchInputPlaceholder"
+              [(ngModel)]="search"
+            />
+          </nz-input-group>
+
+          <ng-template #searchAddOn>
+            <button
+              nz-button
+              nzType="text"
+              nzSize="small"
+              type="submit"
+            >
+              <i nz-icon nzType="arrow-right"></i>
+            </button>
+          </ng-template>
+      </div>
+
+      <div class="col-auto">
+        <button
+          type="button"
+          *ngIf="filtersContent != null"
+          class="mr-2"
+          nz-button
+          nz-popover
+          nzPopoverTitle="Filtros"
+          nzPopoverPlacement="bottomRight"
+          nzPopoverTrigger="click"
+          [nzPopoverContent]="filterPopoverTemplate"
+        >
+          <i nz-icon nzType="control"></i>
+          Filtros Extras
+        </button>
+
+        <ng-template #filterPopoverTemplate>
+          <div class="mb-4">
+            <ng-container [ngTemplateOutlet]="filtersContent"></ng-container>
+          </div>
+
+          <button
+            nz-button
+            nzType="primary"
+            nzBlock
+            (click)="emitList()"
+          >
+            Aplicar Filtro
+          </button>
+        </ng-template>
+      </div>
+    </div>
+  </form>
+
+  <nz-table
+    #table
+    class="table-transparent"
+    nzShowSizeChanger
+    [nzData]="_items"
+    [nzLoading]="loading"
+    [nzPageSize]="pageSize"
+    [nzShowSizeChanger]="true"
+  >
+    <thead>
+      <tr>
+        <th *ngFor="let field of fields">
+          {{ field.label }}
+        </th>
+        <th *ngIf="showActions">Ações</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let data of table.data">
+        <td *ngFor="let field of fields">
+          <ng-container
+            *ngIf="field.template != null"
+            [ngTemplateOutlet]="field.template"
+            [ngTemplateOutletContext]="{$implicit: data}"
+          >
+          </ng-container>
+
+          <ng-container *ngIf="field.template == null">
+            {{ data[field.key] }}
+          </ng-container>
+        </td>
+
+        <td class="td-actions" *ngIf="showActions">
+          <ng-container
+            [ngTemplateOutlet]="extraActions"
+            [ngTemplateOutletContext]="{$implicit: data}"
+          >
+          </ng-container>
+
+          <button
+            *ngIf="shouldShowView(data)"
+            nz-button
+            class="btn-secondary"
+            nzSize="small"
+            nz-tooltip
+            [nzTooltipTitle]="viewBtnText == null ? 'Visualizar' : null"
+            [nzType]="viewBtnType"
+            (click)="emitView(data)"
+          >
+            <i *ngIf="showViewBtnIcon" nz-icon nzType="eye"></i>
+            <ng-container *ngIf="viewBtnText != null">
+              {{ viewBtnText }}
+            </ng-container>
+          </button>
+
+          <button
+            *ngIf="shouldShowEdit(data)"
+            nz-button
+            class="btn-secondary"
+            nzSize="small"
+            nz-tooltip
+            [nzTooltipTitle]="editBtnText == null ? 'Editar' : null"
+            [nzType]="editBtnType"
+            (click)="emitEdit(data)"
+          >
+            <i *ngIf="showEditBtnIcon" nz-icon nzType="edit"></i>
+            <ng-container *ngIf="editBtnText != null">
+              {{ editBtnText }}
+            </ng-container>
+          </button>
+
+          <button
+            *ngIf="shouldShowDelete(data)"
+            nz-button
+            class="btn-secondary"
+            nzSize="small"
+            nz-tooltip
+            [nzTooltipTitle]="deleteBtnText == null ? 'Remover' : null"
+            [nzType]="deleteBtnType"
+            (click)="delete(data)"
+          >
+            <i *ngIf="showDeleteBtnIcon" nz-icon nzType="delete"></i>
+            <ng-container *ngIf="deleteBtnText != null">
+              {{ deleteBtnText }}
+            </ng-container>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>

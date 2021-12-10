@@ -1,0 +1,9 @@
+.hide-empty:empty {
+  display: none;
+}
+
+.spacing-between {
+  > * ~ * {
+    margin-left: .5rem;
+  }
+}
