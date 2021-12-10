@@ -1,0 +1,72 @@
+<form nz-form nzLayout="vertical" [formGroup]="form" (ngSubmit)="submit()">
+
+    <div class="row">
+        
+        <div class="col-6">
+            <nz-form-item>
+                <nz-form-label nzFor="nome">Nome</nz-form-label>
+                <nz-form-control>
+                    <input type="text" nz-input formControlName="nome" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+        <div class="col-6">
+            <nz-form-item>
+                <nz-form-label nzFor="email">E-mail</nz-form-label>
+                <nz-form-control>
+                    <input type="text" nz-input formControlName="email" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+    </div>
+
+    <div class="row" *ngIf="usuario == null">
+
+        <div class="col">
+            <nz-form-item>
+                <nz-form-label nzFor="senha">Senha</nz-form-label>
+                <nz-form-control>
+                    <input type="password" nz-input formControlName="senha" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+        <div class="col">
+            <nz-form-item>
+                <nz-form-label nzFor="senhaConfirma">Confirma a Senha</nz-form-label>
+                <nz-form-control>
+                    <input type="password" nz-input formControlName="senhaConfirma" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <nz-form-item>
+                <nz-form-control>
+                    Ativo:
+                    <label *ngIf="usuario == null" nz-checkbox [ngModel]="true" nzDisabled [ngModelOptions]="{standalone: true}"></label> 
+                    <label *ngIf="usuario != null"  nz-checkbox formControlName="ativo" ></label>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+
+    <nz-divider></nz-divider>
+
+    <div class="text-right spacing-between">
+        <button type="button" nz-button (click)="voltar()">
+            <i nz-icon nzType="left"></i>
+            Voltar
+        </button>
+
+        <button nz-button nzType="primary" [nzLoading]="loading">
+            Salvar
+        </button>
+    </div>
+
+</form>

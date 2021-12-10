@@ -1,0 +1,22 @@
+@import "src/app/theme/styles/variables";
+
+.header {
+  margin-bottom: 2rem;
+}
+.header-body {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid $border-color;
+}
+.header-pretitle {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: $gray-600;
+}
+.header-title {
+  margin-bottom: 0;
+}
+.header-subtitle {
+  margin-top: 0.375rem;
+  margin-bottom: 0;
+  color: $gray-600;
+}

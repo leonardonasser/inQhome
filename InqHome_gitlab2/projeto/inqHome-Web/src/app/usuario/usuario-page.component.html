@@ -1,0 +1,70 @@
+<app-page-header title="Usuarios" pretitle="Listagem">
+    <div slot="right">
+        <button nz-button nzType="primary" (click)="novo()">
+            <i nz-icon nzType="plus"></i>
+            Novo Usuario
+        </button>
+    </div>
+</app-page-header>
+
+<nz-card [nzTitle]="pesquisa" class="card-table">
+
+    <ng-template #pesquisa>
+        <form class="d-flex">
+            <div class="flex-fill">
+                <nz-input-group [nzPrefix]="prefixIconSearch" class="input-group-flush">
+                    <input type="text" nz-input placeholder="Pesquisar por nome..." name="searchInput"
+                        [(ngModel)]="filtro.search" />
+                </nz-input-group>
+
+                <ng-template #prefixIconSearch>
+                    <i nz-icon nzType="search"></i>
+                </ng-template>
+            </div>
+
+            <button nz-button (click)="listar()">Pesquisar</button>
+        </form>
+    </ng-template>
+
+    <nz-table
+        #table
+        [nzData]="usuarios"
+        [nzLoading]="loading">
+        <thead>
+            <tr>
+                <th >#</th>
+                <th >Nome</th>
+                <th >Email</th>
+                <th >Status</th>
+                <th width="10%">Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let data of table.data" >
+            <td>{{ data.idUsuario }}</td>
+            <td >{{ data.nome }}</td>
+            <td >{{ data.email }}</td>
+            <td >  
+               <nz-tag *ngIf="data.ativo" nzColor="green">
+                Ativo
+              </nz-tag>
+              <nz-tag *ngIf="!data.ativo" nzColor="red">
+                Inativo
+              </nz-tag>
+            </td>
+
+            <td class="td-actions"  >
+                <button nz-button nzSize="small" nz-tooltip nzTooltipTitle="Editar" (click)="editar(data)">
+                    <i nz-icon nzType="edit"></i>
+                </button>
+
+                <button nz-button nzSize="small" nz-tooltip nzTooltipTitle="Remover" (click)="remover(data)">
+                    <i nz-icon nzType="delete"></i>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </nz-table>
+
+</nz-card>
+

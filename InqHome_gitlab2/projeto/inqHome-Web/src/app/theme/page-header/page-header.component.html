@@ -1,0 +1,24 @@
+<div class="header" [ngClass]="{'mb-0': noMargin}">
+  <div class="header-body" [ngClass]="{'pb-0': noMargin, 'border-0': noBorder}">
+    <div class="row align-items-end">
+      <div class="col">
+
+        <h6 *ngIf="pretitle != null" class="header-pretitle">
+          {{ pretitle }}
+        </h6>
+
+        <h1 class="header-title">
+          {{ title }}
+        </h1>
+
+        <h2 *ngIf="subtitle != null" class="header-subtitle">
+          {{ subtitle }}
+        </h2>
+      </div>
+
+      <div class="col-auto hide-empty">
+        <ng-content select="[slot=right]"></ng-content>
+      </div>
+    </div>
+  </div>
+</div>
