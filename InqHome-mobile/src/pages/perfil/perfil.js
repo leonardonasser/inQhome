@@ -55,11 +55,11 @@ export default function Perfil() {
 
         const setDeslogUsuario = async () => {
             try {
-              await AsyncStorage.setItem('token', null);
-              await AsyncStorage.setItem('idUsuario', null);
-              await AsyncStorage.setItem('nome', null);
-              await AsyncStorage.setItem('email', null);
-              await AsyncStorage.setItem('telefone', null);
+              await AsyncStorage.setItem('token', '');
+              await AsyncStorage.setItem('idUsuario', '');
+              await AsyncStorage.setItem('nome', '');
+              await AsyncStorage.setItem('email', '');
+              await AsyncStorage.setItem('telefone', '');
             } catch (error) {
                console.log(error.message);
             }

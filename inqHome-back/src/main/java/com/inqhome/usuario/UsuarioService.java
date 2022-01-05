@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.inqhome.config.SecurityConfig;
+import com.inqhome.infra.exceptions.ValidationException;
 
 @Service
 public class UsuarioService {
@@ -25,7 +26,7 @@ public class UsuarioService {
 	}
 	
     public Usuario buscarUsuarioPeloEmail(String email) {
-        return pessoaRepository.findUsuarioByEmail(email).orElseThrow(() -> new RuntimeException());
+        return pessoaRepository.findUsuarioByEmail(email).orElseThrow(() -> new ValidationException("Email invalido"));
     }	
 
 	public Usuario salvarUsuario(CriarUsuarioDTO dados) {

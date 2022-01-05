@@ -1,11 +1,11 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { SafeAreaView, View , Image} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { loginstyle } from "./loginStyle";
 import { TextInput, Button, Card } from "react-native-paper";
 import { Formik, Field } from 'formik';
 import api from '../service/api';
-import { AsyncStorage } from "react-native";
+import { AsyncStorage, Alert } from "react-native";
 
 
 
@@ -22,6 +22,20 @@ export default function Login() {
   }
 
 
+
+  getMyObject = async () => {
+    try {
+      if((await AsyncStorage.getItem('token') || 'none') != 'none' ) {
+        irToHome();
+      } 
+    } catch(e) {
+      // read error
+    }
+  }
+
+  useEffect (() => {
+    getMyObject()
+}, []);
 
 
   return (
@@ -48,13 +62,16 @@ export default function Login() {
                 await AsyncStorage.setItem('email', response.data.email);
                 await AsyncStorage.setItem('telefone', response.data.telefone);
               } catch (error) {
-                 console.log(error.message);
+                  console.log(error.message);
               }
             };
             setUsuario();
-            
+
               console.log('Usuario Logado com sucesso!' + response.data)
               navigation.navigate('Entrar');
+            }).catch((e) => {
+              Alert.alert('Erro ao logar', 'Email ou senha incorretos!');
+              console.log("teste erro")
             });
           }}
         >
